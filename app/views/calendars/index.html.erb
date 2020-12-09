@@ -1,7 +1,7 @@
 <%= form_with model: @plan, url: calendars_path, class: 'form' do |f| %>
-  <%= f.date-select :日付を選択, class: 'date_field' %>
-  <%= f.plan :予定を入力, class: 'text-field' %>
-  <%= f.label :保存, class: 'submit' %>
+  <%= f.date_select :日付を選択, class: 'date' %>
+  <%= f.text_field :予定を入力, class: 'plan' %>
+  <%= f.submit '保存' %>
 <% end %>
 
 <div class=calendar>
@@ -11,10 +11,10 @@
         <% day[:month] %>/<% day[:date] %>
       </div>
       <ul class='content'>
-        <% if @plans.length != 0 %>
-          <% @plans.each do |plan| %>
-            <li class='plan-list'><%= plan %></li>
-          <% end %>
+      <% if day[:plans].length != 0 %>
+        <% day[:plans].each do |plan| %>
+          <li class='plan-list'>・<%= plan %></li>
+        <% end %>
       <% end %>
       </ul>
     </div>
